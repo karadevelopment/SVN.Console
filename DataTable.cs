@@ -49,6 +49,7 @@ namespace SVN.Console2
         public void Write()
         {
             this.CalculateLengths();
+            Console.Clear();
             Console.WriteLine(this);
         }
 
@@ -100,9 +101,9 @@ namespace SVN.Console2
             var width = (maxRowLength * scaling).CeilingToInt();
             var height = (rows.Count * scaling).CeilingToInt();
 
-            width = Math.Max(width, Console.WindowWidth);
+            //width = Math.Max(width, Console.WindowWidth);
             width = Math.Min(width, 240);
-            height = Math.Max(height, Console.WindowHeight);
+            //height = Math.Max(height, Console.WindowHeight);
             height = Math.Min(height, 60);
 
             Console.WindowWidth = width;
