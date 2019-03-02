@@ -83,12 +83,17 @@ namespace SVN.Console2
         {
             var rows = this.DrawRows().ToList();
             var maxRowLength = rows.Max(x => x.Length);
+
             var width = (maxRowLength * 1.01).CeilingToInt();
+            var height = (rows.Count * 1.01).CeilingToInt();
 
             width = Math.Max(width, Console.WindowWidth);
             width = Math.Min(width, 240);
+            height = Math.Max(height, Console.WindowHeight);
+            height = Math.Min(height, 60);
 
             Console.WindowWidth = width;
+            Console.WindowHeight = height;
             return $"{rows.Join("\n")}";
         }
     }
