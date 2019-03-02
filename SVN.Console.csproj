@@ -54,6 +54,10 @@
       <Project>{4977ffe4-f923-4204-b081-17377ff5811e}</Project>
       <Name>SVN.Debug</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SVN.Math\SVN.Math.csproj">
+      <Project>{00D32E34-D99C-489F-A8DB-6B96A5F05035}</Project>
+      <Name>SVN.Math</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="nuget.nuspec" />

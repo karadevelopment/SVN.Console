@@ -8,6 +8,11 @@ namespace SVN.Console2
     {
         private List<DataColumn> Columns { get; } = new List<DataColumn>();
 
+        public int[] Lengths
+        {
+            get => this.Columns.Select(x => x.Length).ToArray();
+        }
+
         public DataRow()
         {
         }
@@ -19,9 +24,19 @@ namespace SVN.Console2
             this.Columns.Add(column);
         }
 
-        public override string ToString()
+        private IEnumerable<string> DrawColumns(int[] lengths)
         {
-            return $"{this.Columns.Select(x => x.ToString()).Join(" ")}";
+            for (var i = 1; i <= lengths.Length; i++)
+            {
+                var length = lengths[i - 1];
+                var column = this.Columns.ElementAtOrDefault(i - 1)?.ToString(length) ?? Enumerable.Range(1, length).Select(x => " ").Join("");
+                yield return column;
+            }
+        }
+
+        public string ToString(int[] lengths)
+        {
+            return $"{this.DrawColumns(lengths).ToList().Join(" # ")}";
         }
     }
 }
